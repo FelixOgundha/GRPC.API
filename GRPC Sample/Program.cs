@@ -1,9 +1,13 @@
+using GRPC_Sample.Data;
 using GRPC_Sample.Services;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddGrpc();
+
+builder.Services.AddDbContext<DataDbContext>(opt=>opt.UseSqlite("Data Source=ToDoDatabase.db"));
 
 var app = builder.Build();
 
